@@ -93,8 +93,11 @@ document.addEventListener('keypress', (event) => {
     console.log("Using addEventListener(): You pressed ", event.key)
 })
 
-//rest() collects all the items into an array mostly as a parameter
-//spread() expands the items into single elements and copies into another element
+/*  -------------
+    rest() collects all the items into an array mostly as a parameter
+    spread() expands the items into single elements and copies into another element
+    -------------
+*/
 const set1 = [1,2,3,4]
 const set2 = [...set1, 5, 6, 7] 
 console.log("Using spread(): " + set2)
@@ -105,3 +108,4 @@ const displayNames = (...names) => {
 }
 displayNames('Radha', 'Himal', 'Chand');
 //Expected Output: Using rest(): Radha,Himal,Chand
+
