@@ -26,9 +26,32 @@ const addItem = () => {
 }
 
 //calculateTotalPrice button functionality
+let totalPrice = ''
 const calculateTotalPrice = () => {
-    let totalPrice = shoppingCart.reduce((total, item) => {
+    totalPrice = shoppingCart.reduce((total, item) => {
         return total + item.price
     }, 0)
     document.querySelector('.div--shopping-cart').innerHTML += `<p><b>Total: </b>${totalPrice}</p>`;     
+}
+
+//pay button functionality
+const pay = (totalPrice) => {
+    let discount
+    let paymentAmount = prompt("Enter payment amount by user")
+
+    if (totalPrice < 400) {
+        discount = 0.1 * totalPrice
+        totalPrice -= discount
+    } 
+    document.querySelector('.div--shopping-cart').innerHTML +=
+        `<p><b>Discount: </b>${discount}</p>
+        <p><b>Final Price: </b>${totalPrice}</p>`;
+    
+    if (paymentAmount >= totalPrice) {
+        paymentAmount -= totalPrice
+        alert("Thank you. Payment received.")
+    }
+    else {        
+        alert("Insufficient balance to proceed.")
+    }
 }
