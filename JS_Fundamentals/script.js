@@ -109,3 +109,65 @@ const displayNames = (...names) => {
 displayNames('Radha', 'Himal', 'Chand');
 //Expected Output: Using rest(): Radha,Himal,Chand
 
+/*  -------------
+    Callback functions are passed as arguments to another function to be called after a certain time or when a condition is met
+    E.g: addEventListener(), setTimeOut()
+    In the given example checkNum is the callback function as it is pass as an argument to map method
+    -------------
+*/
+const naturalNum = [1,2,3,4,5,6,7,8]
+
+const checkNum = (num) => {
+    if (num % 2 == 0) {
+        printEven(num)
+    }
+    else {
+        printOdd(num)
+    }
+}
+
+const printEven = num => console.log(`Using callback function: ${num} is even number`)
+const printOdd = num => console.log(`Using callback function: ${num} is odd number`)
+
+naturalNum.map(checkNum)
+
+/*  -------------
+    async() function does not disrupt the flow of the code and runs parallely on the side
+    await() pauses the entire program and continues only after the function fully executes
+    Promises are objects that store the state of an asynchrounous operation (resolved, rejected or pending) and also offer chaining methods like then(), catch(), finally()
+    -------------
+*/
+
+const exampleAsync = async () => {
+    try {        
+        console.log("Before execution.")
+        const data = await getData()
+        console.log("Execution complete." , data)
+    }
+    catch {
+        console.log("Execution faced an error." , error)        
+    }
+}
+
+const getData = () => {
+    return new Promise((resolve, reject) => {
+        const success = true;
+
+        setTimeout(() => {
+            if (success) {
+                resolve("Promise state: resolved")
+            }
+            else {
+                reject("Promise state: rejected")                
+            }
+        }, 3000);
+    }
+    )
+} 
+
+exampleAsync()
+//Expected Output: Before execution. Execution complete. Promise state: resolved
+
+/*  ------------------------Event propagation------------------------------------*/
+document.querySelector('.event__parent').addEventListener('click',() => console.log("Parent click"),true)
+document.querySelector('.event__child').addEventListener('click', () => console.log("Child click"))

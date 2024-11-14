@@ -164,8 +164,8 @@
         
         <div class="task-10">
             <h4>addEventListener()</h4>
-            <button id="button-click" style="margin-left: 2rem;">Click Me!!</button>
             <pre>
+            <button id="button-click" style="margin-left: 2rem;">Click Me!!</button>
             <code>
                 //addEventListener() adds interactivity by performing certain activity when an element is hovered, pressed, clicked and more
                 document.getElementById("button-click").addEventListener("click", (event) => {
@@ -200,11 +200,87 @@
             </code>
             </pre>
         </div>
+
         <div class="task-12">
-            <h4>async()</h4>
+            <h4>Callback function</h4>
+            <p>Callback functions are passed as arguments to another function to be called after a certain time or when a condition is met <br>
+                E.g: addEventListener(), setTimeOut() <br>
+                In the given example checkNum is the callback function as it is pass as an argument to map method</p>
             <pre>
             <code>
+            const naturalNum = [1,2,3,4,5,6,7,8]
             
+            const checkNum = (num) => {
+                if (num % 2 == 0) {
+                    printEven(num)
+                }
+                else {
+                    printOdd(num)
+                }
+            }
+            
+            const printEven = num => console.log(`Using callback function: ${num} is even number`)
+            const printOdd = num => console.log(`Using callback function: ${num} is odd number`)
+            
+            naturalNum.map(checkNum)
+            </code>
+            </pre>
+        </div>
+        
+        <div class="task-13">
+            <h4>Async, await, promise</h4>
+            <p>async() function does not disrupt the flow of the code and runs parallely on the side <br>
+                await() pauses the entire program and continues only after the function fully executes <br>
+                Promises are objects that store the state of an asynchrounous operation (resolved, rejected or pending) and also offer chaining methods like then(), catch(), finally()</p>
+            <pre>
+            <code>
+                const exampleAsync = async () => {
+                    try {        
+                        console.log("Before execution.")
+                        const data = await getData()
+                        console.log("Execution complete." , data)
+                    }
+                    catch {
+                        console.log("Execution faced an error." , error)        
+                    }
+                }
+                
+                const getData = () => {
+                    return new Promise((resolve, reject) => {
+                        const success = true;
+                
+                        setTimeout(() => {
+                            if (success) {
+                                resolve("Promise state: resolved")
+                            }
+                            else {
+                                reject("Promise state: rejected")                
+                            }
+                        }, 3000);
+                    }
+                    )
+                } 
+                
+                exampleAsync()
+                //Expected Output: Before execution. Execution complete. Promise state: resolved
+            </code>
+            </pre>
+        </div>
+
+        <div class="task-14">
+            <h4>Event Propagation</h4>
+            <p>There are phases of event Propagation - Event bubbling and capturing <br>
+            In event bubbling, the event starts from the target element and triggers the parent's events <br>
+            In event capturing or trickling, the parent's event is triggered, then reaching the target event <br>
+            Setting the third parameter true, enables trickling</p> <br>
+            <pre>
+                <div class="event__parent" style="margin-left: 2rem; border: 1px solid red; padding: 10px;">
+                    I am the parent. Click me and view console<br> <br> <br>
+                    <div class="event__child" style="margin-left: 2rem; border: 1px solid red; padding: 10px;">I am a child. Click me and view console</div> <br>
+                </div>            
+            <code>
+            document.querySelector('.event__parent').addEventListener('click',() => console.log("Parent click"),true)
+            document.querySelector('.event__child').addEventListener('click', () => console.log("Child click"))
             </code>
             </pre>
         </div>

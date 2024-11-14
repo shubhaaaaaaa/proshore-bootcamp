@@ -20,7 +20,7 @@ const addItem = () => {
     availableListings.forEach(element => {
         if (userPrompt == (element.product).toLowerCase()) {
             shoppingCart.push(element)
-            document.querySelector('.div--shopping-cart').innerHTML += `<p>Product: ${element.product}, Price: ${element.price}</p>`; 
+            document.querySelector('.div--shopping-cart').innerHTML += `<p>Product: ${element.product}, Price: ${element.price}</p>`;
         }
     });
 }
@@ -31,7 +31,7 @@ const calculateTotalPrice = () => {
     totalPrice = shoppingCart.reduce((total, item) => {
         return total + item.price
     }, 0)
-    document.querySelector('.div--shopping-cart').innerHTML += `<p><b>Total: </b>${totalPrice}</p>`;     
+    document.querySelector('.div--shopping-cart').innerHTML += `<p><b>Total: </b>${totalPrice}</p>`;
 }
 
 //pay button functionality
@@ -42,16 +42,16 @@ const pay = (totalPrice) => {
     if (totalPrice < 400) {
         discount = 0.1 * totalPrice
         totalPrice -= discount
-    } 
+    }
     document.querySelector('.div--shopping-cart').innerHTML +=
         `<p><b>Discount: </b>${discount}</p>
         <p><b>Final Price: </b>${totalPrice}</p>`;
-    
+
     if (paymentAmount >= totalPrice) {
         paymentAmount -= totalPrice
-        alert("Thank you. Payment received.")
+        alert(`Thank you. Payment received. Your remaining change is ${paymentAmount}`)
     }
-    else {        
-        alert("Insufficient balance to proceed.")
+    else {
+        alert(`Insufficient balance to proceed. You total is ${totalPrice}`)
     }
 }

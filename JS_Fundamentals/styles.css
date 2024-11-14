@@ -18,18 +18,22 @@ body {
   text-align: center;
 }
 
-.container h4 {
+.container h4,.container p {
   padding: 1rem 0rem 0rem 2rem;
   margin: 0;
 }
 
-.task-1 pre, .task-2 pre, .task-3 pre, .task-4 pre, .task-5 pre, .task-6 pre, .task-7 pre, .task-8 pre, .task-9 pre, .task-10 pre, .task-11 pre {
+.container p br{
+  line-height: 0.1rem;
+}
+
+.task-1 pre, .task-2 pre, .task-3 pre, .task-4 pre, .task-5 pre, .task-6 pre, .task-7 pre, .task-8 pre, .task-9 pre, .task-10 pre, .task-11 pre, .task-12 pre , .task-13 pre, .task-14 pre , .task-15 pre {
   opacity: 0;
   transform: translateY(-10px);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.task-1:hover pre, .task-2:hover pre, .task-3:hover pre, .task-4:hover pre, .task-5:hover pre, .task-6:hover pre, .task-7:hover pre, .task-8:hover pre, .task-9:hover pre, .task-10:hover pre, .task-11:hover pre {
+.task-1:hover pre, .task-2:hover pre, .task-3:hover pre, .task-4:hover pre, .task-5:hover pre, .task-6:hover pre, .task-7:hover pre, .task-8:hover pre, .task-9:hover pre, .task-10:hover pre, .task-11:hover pre, .task-12:hover pre , .task-13:hover pre, .task-14:hover pre , .task-15:hover pre {
   opacity: 1;
   transform: translateY(0);
   cursor: pointer;
