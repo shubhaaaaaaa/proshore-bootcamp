@@ -5,26 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cash Register App</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Font awesome CDN  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- Tailwind CDN  -->
+    <link href="css/output.css" rel="stylesheet">
+
 </head>
 <body>
-    <h1>Shubha's Cash Register</h1>
-    <p>Add new items to your shopping cart and enjoy exclusive discounts!!</p>
-
-    <div class="div--cash-register">
-        <h3>Cash Register</h3>
-        <div class="cash-register-products">
-
+    <!-- Admin's Cash Register  -->
+    <div class="border w-1/2 mx-auto my-12 p-4 rounded-md bg-custom-aqua-light">
+      <h1 class="font-bold text-2xl text-center mt-4">Admin's Cash Register</h1>
+    
+    <div class="flex justify-center py-[2rem] ">    
+      <div class="w-1/2">
+        <h2 class="font-semibold">Available Products</h2><br>
+        <div class="js-show-available-product">
+          
         </div>
-        <button class="button--add-item" onclick="addItem()"><i class="fa fa-plus"></i> Add item</button>
-        <button class="button--calculate-total" onclick="calculateTotalPrice()"><i class="fa fa-plus"></i> Calculate Total</button>
-        <button class="button--pay" onclick="pay(totalPrice)"><i class="fa fa-plus"></i> Pay</button>
+      </div>
+      
+      <div class="flex justify-center items-end gap-5 w-full">
+        <button class="button is-primary is-outlined" onclick="addItem()"><i class="fa-solid fa-plus"></i>Add Item</button>
+        <button class="button is-primary has-text-white" onclick="pay(total)">Proceed to Pay</button>
+      </div>
+      
+    </div>
+    </div>
+    
+    <!-- User's Shopping Cart  -->
+    <div class="border w-1/2 mx-auto my-12 p-4 rounded-md bg-custom-aqua-light">
+    <h1 class="font-bold text-2xl text-center mt-4">User's Shopping Cart</h1>
+    <div class="flex justify-center items-end py-[2rem]">    
+      <div class="w-1/2">
+        <h2 class="font-semibold">Items in Cart</h2><br>
+        <div class="js-show-cart-item"></div>
+      </div>
+      
+      <div class="js-show-total"></div>
     </div>
 
-    <div class="div--shopping-cart">
-        <h3>My Shopping Cart</h3>
-        
     </div>
 </body>
 <script src="script.js"></script>
