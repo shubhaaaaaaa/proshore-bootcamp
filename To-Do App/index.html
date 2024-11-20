@@ -12,44 +12,12 @@
 
     <link rel="stylesheet" href="style.css">
 <body>
-    <main class="hidden p-10 w-[700px] mx-auto border mt-6 h-[92vh] rounded bg-gray-50">
-        <h1 class="font-bold text-center text-3xl mb-10">My To-Do</h1>
 
-        <div class="flex items-center justify-center mb-8">
-            <button class="font-bold border rounded-md px-5 py-2 bg-white" onclick="displayModal()">
-                <i class="fas fa-plus"></i> Add
-            </button>
-        </div>
-
-        <div id="js-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
-            <div class="bg-white p-6 rounded-lg">
-                <h2>Type your new task</h2>
-                <input type="text" placeholder="Start adding...." class="border rounded-md px-5 py-2 mr-5" id="js-user-input">
-                <button onclick="addButtonModal()" class="mt-4 px-4 py-2 border rounded-md">Add</button>
-            </div>
-        </div>
-
-        <div class=" max-h-[450px] overflow-y-scroll scroll-smooth">
-            <table class="table-fixed min-w-full border border-neutral-200 text-sm font-light text-surface bg-white">
-                <thead class="border-b border-neutral-200 text-white font-medium bg-[#332D2D]">
-                    <tr>
-                        <th scope="col"
-                        class="border-e border-neutral-200  px-6 py-4 ">Checkbox</th>
-                        <th class="border-e border-neutral-200 px-6 py-4">Task</th>
-                        <th class="border-e border-neutral-200 px-6 py-4"></th>
-                    </tr>
-                </thead>
-                <tbody id="js-table-list"></tbody>
-            </table>
-        </div>
-
-    </main>
-    
-    <main class="mx-auto my-12 w-3/4 bg-yellow">
-        <header class="flex items-center justify-around bg-[#4f432b] py-2 text-[#fffcf5]">
+    <main class="mx-auto my-12 w-1/2 bg-yellow">
+        <header class="flex items-center justify-around bg-[#4f432b] py-2 text-[#fffcf5] rounded-t-lg">
             <i class="fa-solid fa-bars hover:fa-burger text-xl"></i>
             <h1 class="text-3xl font-bold">To-Do</h1>
-            <i class="fa-regular fa-pen-to-square text-xl"></i>
+            <i class="fa-regular fa-pen-to-square text-xl" onclick="toggleModal()"></i>
         </header>
 
         <div class="bg-[#fcefb4] flex justify-around py-2">
@@ -58,19 +26,22 @@
             <span class="flex-1 text-center">Done</span>
         </div>
 
-        <div class=" max-h-[450px] overflow-y-scroll scroll-smooth bg-[#fdf8e1] py-12">
-            <table class="">
-                <thead class="">
-                    <tr>
-                        <th>Checkbox</th>
-                        <th>Task</th>
-                        <th></th>
-                    </tr>
-                </thead>
+        
+        <div class="h-[450px] overflow-y-scroll scroll-smooth bg-[#fdf8e1] py-6 px-8 rounded-b-lg">
+            <h2 id="date" class="font-semibold text-center pb-2"></h2>
+            <table class="text-sm font-light">
                 <tbody id="js-table-list"></tbody>
             </table>
         </div>
+
+        <div id="js-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-start pt-20 backdrop-blur-sm ">
+            <div class="p-6 rounded-lg bg-[#fdf8e1]">
+                <input type="text" placeholder="Start adding...." class="border rounded-md px-5 py-2 mr-5 " id="js-user-input">
+                <button onclick="addButtonModal()" class="mt-4 px-4 py-2 border rounded-md bg-white hover:">Add</button>
+            </div>
+        </div>
     </main>
+
 </body>
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
 </html>
