@@ -4,6 +4,12 @@ const modal = document.getElementById('js-modal');
 
 let items = []
 
+//Popup Modal
+window.toggleModal = () => {
+    modal.classList.toggle('hidden');
+    modal.classList.toggle('block');
+};
+
 //add item to table
 function addItem(newTodo) {
     //tr element
@@ -43,12 +49,6 @@ function addItem(newTodo) {
     //apend the tr to main table
     toDoList.appendChild(element_tr)
 }
-
-//Popup Modal
-const toggleModal = () => {
-    modal.classList.toggle('hidden');
-    modal.classList.toggle('block');
-};
 
 //focus on input as soon as modal opens
 window.onclick = function (event) {
@@ -117,5 +117,4 @@ const removeFromLocal = (item) => {
 
 //Get date
 document.getElementById('date').innerText = new Date().toLocaleDateString('en-us', { weekday:"short", day:"numeric", year:"numeric", month:"long"}) 
-
 
