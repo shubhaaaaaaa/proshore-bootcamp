@@ -1,17 +1,13 @@
-import { fetchTodos, updateTodo, deleteTodo } from './jsonserver.js'
+import { updateTodo, deleteTodo } from './jsonserver.js'
+import { dragAndDrop } from './js/draggable.js'
 
 const toDoList = document.getElementById('js-table-list')
-
-//display all data on load
-window.onload = async () => {
-    const todos = await fetchTodos();
-    todos.forEach((todo) => addItem(todo));
-};
 
 function addItem(todo) {
     //tr element
     const element_tr = document.createElement('tr')
-    element_tr.classList.add('border-b', 'border-neutral-200')
+    element_tr.classList.add('border-b', 'border-neutral-200', 'draggable', 'hover:scale-105')
+    element_tr.draggable = true
     element_tr.id = todo.id
     
     //td element - checkbox col
@@ -35,10 +31,11 @@ function addItem(todo) {
     checkbox.addEventListener('click', () => {
         if (checkbox.checked) {
             element_task.classList.add('line-through')
-            updateTodo(todo.id, { id: todo.id, text: todo.text , completed:true })                                         
-        } else {
+            updateTodo(todo.id, { id: todo.id, text: todo.text, completed: true })  
+        }
+        else {
             element_task.classList.remove('line-through')
-            updateTodo(todo.id, { id: todo.id, text: todo.text , completed:false }) 
+            updateTodo(todo.id, { id: todo.id, text: todo.text, completed: false }) 
         }
     })
     
@@ -51,7 +48,7 @@ function addItem(todo) {
     //td element - trash icon col
     const element_more = document.createElement('td')
     const trashIcon = document.createElement('i')
-    trashIcon.classList.add('fas', 'fa-trash-alt', 'cursor-pointer', 'px-5')
+    trashIcon.classList.add('fas', 'fa-trash-alt', 'cursor-pointer', 'px-5', 'hover:text-red-600')
     element_more.appendChild(trashIcon)
 
     trashIcon.onclick = () => {
@@ -66,6 +63,9 @@ function addItem(todo) {
 
     //append the tr to main table
     toDoList.appendChild(element_tr)
+    dragAndDrop()
 }
+
+dragAndDrop()
 
 export {addItem}

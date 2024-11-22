@@ -11,22 +11,22 @@
 <body>
 
     <main class="mx-auto my-12 w-1/2 bg-yellow">
-        <header class="flex items-center justify-around bg-[#4f432b] py-2 text-[#fffcf5] rounded-t-lg">
-            <i class="fa-solid fa-bars hover:fa-burger text-xl"></i>
+        <header class="flex items-center justify-around bg-[#4f432b] py-4 text-[#fffcf5] rounded-t-lg">
+            <i class="fa-solid fa-bars text-xl cursor-pointer" onclick="openSidebar()"></i>
             <h1 class="text-3xl font-bold">To-Do</h1>
             <i class="fa-regular fa-pen-to-square text-xl" onclick="toggleModal()"></i>
         </header>
 
-        <!-- <div class="bg-[#fcefb4] flex justify-around py-2">
-            <span class="flex-1 text-center">Pending</span>
-            <span class="flex-1 text-center">All</span>
-            <span class="flex-1 text-center">Done</span>
-        </div> -->
+        <div class="bg-[#fcefb4] flex justify-around">
+            <div class="flex-1 text-center border py-2" id="filter-pending">Pending</div>
+            <div class="flex-1 text-center underline  py-2" id="filter-all">All</div>
+            <div class="flex-1 text-center  py-2" id="filter-done">Done</div>
+        </div>
 
         
         <div class="h-[450px] overflow-y-scroll scroll-smooth bg-[#fdf8e1] py-6 px-8 rounded-b-lg">
             <h2 id="date" class="font-semibold text-center pb-2"></h2>
-            <table class="text-sm font-light">
+            <table class="text-sm font-light mx-auto">
                 <tbody id="js-table-list"></tbody>
             </table>
         </div>
@@ -38,9 +38,13 @@
                 <button onclick="addButtonModal()" class="mt-4 px-4 py-2 border rounded-md bg-white">Add</button>
             </div>
         </div>
+
     </main>
+
 </body>
 <script type="module" src="script.js"></script>
 <script type="module" src="js/modal.js"></script>
 <script type="module" src="js/date.js"></script>
+<script type="module" src="js/filter.js"></script>
+<script type="module" src="js/sidebar.js"></script>
 </html>

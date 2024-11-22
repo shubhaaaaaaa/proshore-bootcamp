@@ -1,5 +1,6 @@
 import { addTodo } from '../jsonserver.js'
 import { addItem } from '../script.js'
+import {defaultFilterAll} from '../js/filter.js'
 
 const modal = document.getElementById('js-modal');
 const userInput = document.getElementById('js-user-input')
@@ -22,10 +23,11 @@ window.onclick = function (event) {
 window.addButtonModal = async () => {
 
     const newTodo = await addTodo({text: userInput.value, completed: false });
-    addItem(newTodo); 
-
+    addItem(newTodo);
+    
     userInput.value = ''
     toggleModal()
+    defaultFilterAll()
 }
 
 //Pressing enter to add new item

@@ -31,7 +31,6 @@ const deleteTodo = async (id) => {
     await fetch(`${url}/${id}`, {
         method: 'delete'
     })
-    return console.log('Todo deleted')
 }
 
 export { addTodo, fetchTodos, updateTodo, deleteTodo }

@@ -26,3 +26,12 @@
 .smooth-scroll {
     scroll-behavior: smooth;
 }
+
+/* for dragging item  */
+.dragging{
+    background-color: rgb(253, 255, 244);
+  }
+
+.dragging:hover{
+    background-color: rgb(253, 255, 244);
+  }

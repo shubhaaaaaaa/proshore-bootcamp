@@ -39,7 +39,7 @@ const addItem = () => {
     let cartContainer = document.querySelector('.js-show-cart-item')
     let userPrompt = (prompt("what do you want to add?")).toLowerCase()
     
-    
+    availableProduct.filter()
     // availableProduct.forEach((item) => {
     //     if (userPrompt.toLowerCase() == (item.product).toLowerCase()) {
     //         let p = document.createElement('p')
