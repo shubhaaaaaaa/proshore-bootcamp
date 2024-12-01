@@ -1,9 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html",],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    'main-img': "url('/public/assets/img/bg.webp')"
+    extend: {
+      colors: {
+        primary: "#ff5630", 
+        darkblue: "#001f3f",
+      },
+    },
   },
   plugins: [],
-}
-
+};
