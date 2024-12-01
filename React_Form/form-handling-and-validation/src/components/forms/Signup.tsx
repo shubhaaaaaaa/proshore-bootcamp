@@ -2,7 +2,6 @@ import * as React from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import { Button, Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { useNavigate } from 'react-router-dom';
 
 // custom form components
 import { InputElement } from "./modules/InputElement.tsx";
@@ -16,7 +15,6 @@ import { TermsandCondition } from "./modules/TermsandCondition.tsx";
 import { SchemaCustom } from "../validations/SchemaCustom.tsx";
 
 const Signup = () => {
-  const navigate = useNavigate();
   return (
     <>
       <Formik
@@ -43,7 +41,7 @@ const Signup = () => {
             alert(JSON.stringify(values, null, 2));
             actions.setSubmitting(false);
             actions.resetForm()
-            navigate('/login');
+            window.location.replace('/login'); 
           }, 1000);
 
           
