@@ -7,14 +7,14 @@ const userInput = document.getElementById('js-user-input')
 
 window.toggleModal = () => {
     modal.classList.toggle('hidden');
-    modal.classList.toggle('block');
+    modal.classList.toggle('flex');
 };
 
 //focus on input as soon as modal opens
 window.onclick = function (event) {
     if (event.target == modal) {
         toggleModal()
-    } else if (modal.classList.contains('block')) {
+    } else if (modal.classList.contains('flex')) {
         userInput.focus();
     }
 };

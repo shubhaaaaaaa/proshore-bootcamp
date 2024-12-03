@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do App</title>
-
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+    
     <link rel="stylesheet" href="css/output.css">
-<body>
-
+    <body>
+        
     <main class="mx-auto my-12 w-1/2 bg-yellow">
+
         <header class="flex items-center justify-around bg-[#4f432b] py-4 text-[#fffcf5] rounded-t-lg">
-            <i class="fa-solid fa-bars text-xl cursor-pointer" onclick="openSidebar()"></i>
+            <!-- <i class="fa-solid fa-bars text-xl cursor-pointer" onclick="openSidebar()"></i> -->
+             <img src="logo.png" alt="logo" width="30px">
             <h1 class="text-3xl font-bold">To-Do</h1>
-            <i class="fa-regular fa-pen-to-square text-xl" onclick="toggleModal()"></i>
+            <i class="fa-regular fa-pen-to-square text-xl cursor-pointer" onclick="toggleModal()"></i>
         </header>
 
         <div class="bg-[#fcefb4] flex justify-around">
@@ -31,7 +33,7 @@
             </table>
         </div>
 
-        <div id="js-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-start pt-20 backdrop-blur-sm ">
+        <div id="js-modal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 justify-center items-start pt-20 backdrop-blur-sm ">
             <div class="p-6 rounded-lg bg-[#fdf8e1]">
                 <h1 class="text-[#4f432b] font-bold">Add a new task</h1>
                 <input type="text" placeholder="Start adding...." class="border rounded-md px-5 py-2 mr-5 " id="js-user-input">
@@ -39,6 +41,18 @@
             </div>
         </div>
 
+        <div class="bg-[#4f432b] text-[#fffcf5] text-center rounded-b-lg">
+            <span class="text-sm">
+                &copy; <span class="get-year"></span>
+                <a
+                    href="https://www.shubhakhadgi.com.np"
+                    target="_blank"
+                >
+                    Shubha Khadgi
+                </a>
+            </span>
+        </div>                             
+        
     </main>
 
 </body>

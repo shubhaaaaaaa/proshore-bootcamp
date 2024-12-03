@@ -4,9 +4,14 @@ import { dragAndDrop } from './js/draggable.js'
 const toDoList = document.getElementById('js-table-list')
 
 function addItem(todo) {
+
+    if (!todo.text.trim()) {
+        return;  
+    }
+
     //tr element
     const element_tr = document.createElement('tr')
-    element_tr.classList.add('border-b', 'border-neutral-200', 'draggable', 'hover:scale-105')
+    element_tr.classList.add('border-b', 'border-neutral-200', 'draggable')
     element_tr.draggable = true
     element_tr.id = todo.id
     
