@@ -2,21 +2,36 @@ import * as React from "react";
 import { Formik, Form } from "formik";
 import { Button, Box, Typography, Link } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 // custom form components
 import { InputElement } from "./modules/InputElement.tsx";
+import { getFormDetails } from "../../jsonserver.js";
 
 const Login = () => {
+  const [username, setUsername] = useState('')
+  const id = useLocation().state
+  useEffect(() => {
+    const fetchUsername = async() => {
+      const username = await getFormDetails(id)
+      setUsername(username)
+    }
+
+    fetchUsername()
+  },[id])
+   
+
   return (
     <>
       <Formik
+        enableReinitialize
         initialValues={{
-          username: "",
+          username: username,
           password: "",
               }}
               
         onSubmit={async (values, actions) => {
-          console.log("Submitted Data:", values);
           actions.resetForm();
               }}>
               
@@ -30,11 +45,11 @@ const Login = () => {
 
             <Grid container rowSpacing={2} columnSpacing={5}>
                 <Grid size={12}>
-                    <InputElement label="Username" type="text" name="username" />
+                    <InputElement placeholder='Username' label="Username" type="text" name="username" />
                 </Grid>
 
                 <Grid size={12}>
-                    <InputElement label="Password" type="password" name="password"/>
+                    <InputElement placeholder='Password' label="Password" type="password" name="password"/>
                 </Grid>
             </Grid>
           </Box>

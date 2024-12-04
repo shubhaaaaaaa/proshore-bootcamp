@@ -2,6 +2,7 @@ import * as React from "react";
 import { Formik, Form, ErrorMessage } from "formik";
 import { Button, Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import { useNavigate } from "react-router-dom";
 
 // custom form components
 import { InputElement } from "./modules/InputElement.tsx";
@@ -13,12 +14,15 @@ import { TextareaElement } from "./modules/TextareaElement.tsx";
 import { TermsandCondition } from "./modules/TermsandCondition.tsx";
 
 import { SchemaCustom } from "../validations/SchemaCustom.tsx";
+import { postToForm } from '../../jsonserver.js'
 
 const Signup = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Formik
         initialValues={{
+          id:(Math.floor(Math.random() * Math.floor(Math.random() * Date.now()))).toString(),
           address: "",
           condition: false,
           dob: "",
@@ -38,15 +42,12 @@ const Signup = () => {
         validationSchema={SchemaCustom}
         onSubmit={(values, actions) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            postToForm(values)
             actions.setSubmitting(false);
             actions.resetForm()
-            window.location.replace('/login'); 
-          }, 1000);
-
-          
-        }}>  
-        
+            navigate("/login", { state: values.id }); 
+          }, 1000);          
+        }}>          
         
         <Form className="main-container">
           {/* Personal Info  */}
@@ -70,24 +71,24 @@ const Signup = () => {
 
             <Grid container rowSpacing={2} columnSpacing={5}>
               <Grid size={6} className="mb-2">
-                <InputElement label="First Name" type="text" name="fname" />
+                <InputElement placeholder='' label="First Name" type="text" name="fname" />
                 <ErrorMessage name="fname" component="div" className="error-text" />
               </Grid>
               <Grid size={6} className="mb-2">
-                <InputElement label="Last Name" type="text" name="lname" />
+                <InputElement placeholder='' label="Last Name" type="text" name="lname" />
                 <ErrorMessage name="lname" component="div" className="error-text" />
               </Grid>
 
               <Grid size={4}>
-                <InputElement label="Contact Number" type="number" name="number"/>
+                <InputElement placeholder='' label="Contact Number" type="number" name="number"/>
                 <ErrorMessage name="number" component="div" className="error-text" />
               </Grid>
               <Grid size={4}>
-                <InputElement label="Address" type="text" name="address" />
+                <InputElement placeholder='' label="Address" type="text" name="address" />
                 <ErrorMessage name="address" component="div" className="error-text" />
               </Grid>
               <Grid size={4}>
-                <InputElement label="Email" type="text" name="email" />
+                <InputElement placeholder='' label="Email" type="text" name="email" />
                 <ErrorMessage name="email" component="div" className="error-text" />
               </Grid>
 
@@ -96,7 +97,7 @@ const Signup = () => {
                 <ErrorMessage name="gender" component="div" className="error-text" />
               </Grid>
               <Grid size={4} className="mt-5">
-                <InputElement label="Date of Birth" type="date" name="dob" />
+                <InputElement placeholder='' label="Date of Birth" type="date" name="dob" />
                 <ErrorMessage name="dob" component="div" className="error-text" />
               </Grid>
               <Grid size={4}>
@@ -160,16 +161,16 @@ const Signup = () => {
 
             <Grid container rowSpacing={2} columnSpacing={5}>
               <Grid size={12}>
-                <InputElement label="Username" type="text" name="username" />
+                <InputElement placeholder='6 character username' label="Username" type="text" name="username" />
                 <ErrorMessage name="username" component="div" className="error-text" />
               </Grid>
 
               <Grid size={6}>
-                <InputElement label="Password" type="password" name="password"/>
+                <InputElement placeholder='Enter password' label="Password" type="password" name="password"/>
                 <ErrorMessage name="password" component="div" className="error-text" />
               </Grid>
               <Grid size={6}>
-                <InputElement label="Retype Password" type="password" name="repassword"/>
+                <InputElement placeholder='Retype password' label="Retype Password" type="password" name="repassword"/>
                 <ErrorMessage name="repassword" component="div" className="error-text" />
               </Grid>
 

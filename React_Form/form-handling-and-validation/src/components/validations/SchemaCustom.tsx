@@ -10,6 +10,27 @@ export const SchemaCustom = yup.object().shape({
     
     dob: yup.date()
             .max(new Date(), 'Date of birth cannot be in the future')
+            .test('dob', 'You need to be at least 16 to fill form', (value) => {
+                if (!value) return false;
+              
+                const today = new Date();
+                const birthDate = new Date(value);
+              
+                const age = today.getFullYear() - birthDate.getFullYear();
+                const monthDiff = today.getMonth() - birthDate.getMonth();
+                const dayDiff = today.getDate() - birthDate.getDate();
+              
+                if (age > 16) {
+                        return true
+                    }
+                if (age === 16) {
+                        if (monthDiff > 0 || (monthDiff === 0 && dayDiff >= 0)) {
+                                return true; 
+                            }
+                    }
+                    return false
+                
+              })
             .required('Date of birth is required'),
     
     education: yup.string()
@@ -47,9 +68,7 @@ export const SchemaCustom = yup.object().shape({
     password: yup.string()
                 .required('No password provided.')
                 .min(8, 'Password is too short - should be 8 chars minimum.')
-                .matches(/[0-9]/, 'Password requires a number.')
-                .matches(/[a-z]/, 'Password requires a lowercase letter.')
-                .matches(/[A-Z]/, 'Password requires an uppercase letter.'),
+                .matches(/(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])/, 'Password requires a number, one uppercase and one lowercase letter'),
 
     repassword: yup.string()
                 .oneOf([yup.ref('password')], 'Passwords must match'),    

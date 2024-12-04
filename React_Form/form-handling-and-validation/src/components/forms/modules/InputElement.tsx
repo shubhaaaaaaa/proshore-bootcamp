@@ -2,7 +2,7 @@ import React from 'react'
 import { TextField } from '@mui/material';
 import { useField } from 'formik'
 
-export const InputElement = ({ label, type, name }) => {
+export const InputElement = ({ label, type, placeholder, name }) => {
   const [field] = useField(name);
   
     return (
@@ -11,6 +11,7 @@ export const InputElement = ({ label, type, name }) => {
                 {...field}
                 size="small"
                 variant="outlined" 
+                placeholder={placeholder}
                 label={label}
                 type={type}
                 name={name}
