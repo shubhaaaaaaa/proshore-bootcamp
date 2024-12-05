@@ -18,7 +18,7 @@ export const CheckboxElement = ({ name }) => {
             }, 0)
             
             return updatedList
-        })        
+        })     
     }
 
     return (

@@ -1,30 +1,46 @@
-import React from 'react'
-import { Textarea } from '@mui/joy';
+import React from "react";
 import { FormLabel, FormControl } from "@mui/material";
-import { useField } from 'formik'
+
+import { useField } from "formik";
+
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import BalloonEditor from "@ckeditor/ckeditor5-build-balloon";
+
+import "../../../index.css";
 
 export const TextareaElement = ({ name }) => {
-    const [field] = useField(name);
+  const [field, meta, helpers] = useField(name);
 
-    return (
-        <FormControl fullWidth>
-            
-            <FormLabel
-            sx={{
-                fontSize: '0.7rem',
-                paddingBottom: '10px',
-            }}>
-            Tell us more about yourself
-            </FormLabel>
+  const handleEditorChange = (event, editor) => {
+    const data = editor.getData();
+    helpers.setValue(data);
+  };
 
-            <Textarea
-            {...field}
-            name={name}
-            disabled={false}
-            minRows={2}
-            size="sm"
-            />
+  const EditorConfig = () => {
+    return {
+      toolbar: ["bold", "italic", "bulletedList", "numberedList", "Link"],
+      licenseKey: "GPL",
+    }
+  };
 
-        </FormControl>
-            )
-}
+  return (
+    <FormControl fullWidth>
+      <FormLabel
+        sx={{
+          fontSize: "0.7rem",
+          paddingBottom: "10px",
+        }}>
+        Tell us more about yourself
+      </FormLabel>
+
+      <div className="border-2 rounded-md top-0">
+        <CKEditor
+          editor={BalloonEditor as any}
+          data=""
+          config={EditorConfig()}
+          onChange={handleEditorChange}
+        />
+      </div>
+    </FormControl>
+  );
+};

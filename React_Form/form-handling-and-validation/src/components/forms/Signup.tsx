@@ -13,11 +13,14 @@ import { SliderElement } from "./modules/SliderElement.tsx";
 import { TextareaElement } from "./modules/TextareaElement.tsx";
 import { TermsandCondition } from "./modules/TermsandCondition.tsx";
 
+//validation
 import { SchemaCustom } from "../validations/SchemaCustom.tsx";
+//json server
 import { postToForm } from '../../jsonserver.js'
 
 const Signup = () => {
   const navigate = useNavigate();
+  
   return (
     <>
       <Formik
@@ -29,7 +32,7 @@ const Signup = () => {
           education: "",
           email: "",
           fname: "",
-          gender: "",
+          gender: "female",
           interests: [],
           lname: "",
           number: "",
@@ -42,6 +45,7 @@ const Signup = () => {
         validationSchema={SchemaCustom}
         onSubmit={(values, actions) => {
           setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
             postToForm(values)
             actions.setSubmitting(false);
             actions.resetForm()
@@ -72,37 +76,36 @@ const Signup = () => {
             <Grid container rowSpacing={2} columnSpacing={5}>
               <Grid size={6} className="mb-2">
                 <InputElement placeholder='' label="First Name" type="text" name="fname" />
-                <ErrorMessage name="fname" component="div" className="error-text" />
+                <ErrorMessage name="fname" component='div' className="error-text" />
               </Grid>
               <Grid size={6} className="mb-2">
                 <InputElement placeholder='' label="Last Name" type="text" name="lname" />
-                <ErrorMessage name="lname" component="div" className="error-text" />
+                <ErrorMessage name="lname" component='div' className="error-text" />
               </Grid>
 
               <Grid size={4}>
                 <InputElement placeholder='' label="Contact Number" type="number" name="number"/>
-                <ErrorMessage name="number" component="div" className="error-text" />
+                <ErrorMessage name="number" component='div' className="error-text" />
               </Grid>
               <Grid size={4}>
                 <InputElement placeholder='' label="Address" type="text" name="address" />
-                <ErrorMessage name="address" component="div" className="error-text" />
+                <ErrorMessage name="address" component='div' className="error-text" />
               </Grid>
               <Grid size={4}>
                 <InputElement placeholder='' label="Email" type="text" name="email" />
-                <ErrorMessage name="email" component="div" className="error-text" />
+                <ErrorMessage name="email" component='div' className="error-text" />
               </Grid>
 
               <Grid size={4}>
                 <RadioElement name="gender" />
-                <ErrorMessage name="gender" component="div" className="error-text" />
               </Grid>
               <Grid size={4} className="mt-5">
                 <InputElement placeholder='' label="Date of Birth" type="date" name="dob" />
-                <ErrorMessage name="dob" component="div" className="error-text" />
+                <ErrorMessage name="dob" component='div' className="error-text" />
               </Grid>
               <Grid size={4}>
                 <SelectElement name="education" />
-                <ErrorMessage name="education" component="div" className="error-text" />
+                <ErrorMessage name="education" component='div' className="error-text" />
               </Grid>
             </Grid>
           </Box>
@@ -129,13 +132,13 @@ const Signup = () => {
             <Grid container rowSpacing={2} columnSpacing={5}>
               <Grid size={4}>
                 <CheckboxElement name="interests" />
-                <ErrorMessage name="interests" component="div" className="error-text" />
+                <ErrorMessage name="interests" component='div' className="error-text" />
               </Grid>
               <Grid size={8}>
                 <SliderElement name="rating" />
-                <ErrorMessage name="rating" component="div" className="error-text" />
+                <ErrorMessage name="rating" component='div' className="error-text" />
                 <TextareaElement name="textarea" />
-                <ErrorMessage name="textarea" component="div" className="error-text" />
+                <ErrorMessage name="textarea" component='div' className="error-text" />
               </Grid>
             </Grid>
           </Box>
@@ -162,21 +165,21 @@ const Signup = () => {
             <Grid container rowSpacing={2} columnSpacing={5}>
               <Grid size={12}>
                 <InputElement placeholder='6 character username' label="Username" type="text" name="username" />
-                <ErrorMessage name="username" component="div" className="error-text" />
+                <ErrorMessage name="username" component='div' className="error-text" />
               </Grid>
 
               <Grid size={6}>
                 <InputElement placeholder='Enter password' label="Password" type="password" name="password"/>
-                <ErrorMessage name="password" component="div" className="error-text" />
+                <ErrorMessage name="password" component='div' className="error-text" />
               </Grid>
               <Grid size={6}>
                 <InputElement placeholder='Retype password' label="Retype Password" type="password" name="repassword"/>
-                <ErrorMessage name="repassword" component="div" className="error-text" />
+                <ErrorMessage name="repassword" component='div' className="error-text" />
               </Grid>
 
               <Grid size={12}>
                 <TermsandCondition name="condition" />
-                <ErrorMessage name="condition" component="div" className="error-text" />
+                <ErrorMessage name="condition" component='div' className="error-text" />
               </Grid>
             </Grid>
           </Box>

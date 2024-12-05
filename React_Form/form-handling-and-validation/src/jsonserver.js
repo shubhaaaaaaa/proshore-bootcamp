@@ -3,13 +3,15 @@ const url = 'http://localhost:8080/form-details'
 const postToForm = async (data) => {
 
     try {
-        fetch(url, {
-            method: 'post',
+        const response = await fetch(url, {
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify(data)
-        })
+            body: JSON.stringify(data),
+        });
+        
+        return await response.json();
     }
     
     catch(e) {
@@ -34,7 +36,7 @@ const getFormDetails = async (id) => {
             }
     
             const data = await response.json();
-            return data.username; 
+            return data; 
         }
 
         return ''
@@ -46,4 +48,21 @@ const getFormDetails = async (id) => {
 
 }
 
-export { postToForm, getFormDetails }
+const getAllDetails = async () => {
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        const data = await response.json();
+        return data;
+
+    } catch (e) {
+        console.log('There was an error: ', e);
+    }
+}
+
+export { postToForm, getFormDetails, getAllDetails }
