@@ -1,11 +1,14 @@
 import React from 'react'
 import { Button, Box } from "@mui/material";
+import { useSelector } from 'react-redux';
 
 const Success = () => {
+  const username = useSelector((state) => state.user.username);
   return (
     <div className='main-container'>
       <h1 className="text-[3rem] text-center font-bold tracking-tight mb-10">
-      Logged&nbsp;<span className="text-primary">In !!</span>
+        Logged&nbsp;<span className="text-primary">In !!</span>
+        <p>Hello, {username} </p>
       </h1>
       <Box className="flex justify-center gap-20">
             <Button

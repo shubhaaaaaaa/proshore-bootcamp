@@ -5,6 +5,8 @@ import Grid from "@mui/material/Grid2";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { storeName } from "../../slices/userSlice.js";
 
 // custom form components
 import { InputElement } from "./modules/InputElement.tsx";
@@ -13,6 +15,7 @@ import { getAllDetails } from "../../jsonserver.js";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [username, setUsername] = useState("");
   const id = useLocation().state;
@@ -41,6 +44,7 @@ const Login = () => {
           const user = data.find(user => user.username === values.username && user.password === values.password);
 
           if (user) {
+            dispatch(storeName(user.username));
             navigate("/success");
           } else {
             alert("Invalid username or password");
