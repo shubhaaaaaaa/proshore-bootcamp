@@ -5,18 +5,18 @@ import Grid from "@mui/material/Grid2";
 import { useNavigate } from "react-router-dom";
 
 // custom form components
-import { InputElement } from "./modules/InputElement.tsx";
-import { RadioElement } from "./modules/RadioElement.tsx";
-import { SelectElement } from "./modules/SelectElement.tsx";
-import { CheckboxElement } from "./modules/CheckboxElement.tsx";
-import { SliderElement } from "./modules/SliderElement.tsx";
-import { TextareaElement } from "./modules/TextareaElement.tsx";
-import { TermsandCondition } from "./modules/TermsandCondition.tsx";
+import  { InputElement }  from "../components/form-elements/InputElement.tsx";
+import { RadioElement } from "../components/form-elements/RadioElement.tsx";
+import { SelectElement } from "../components/form-elements/SelectElement.tsx";
+import { CheckboxElement } from "../components/form-elements/CheckboxElement.tsx";
+import { SliderElement } from "../components/form-elements/SliderElement.tsx";
+import { TextareaElement } from "../components/form-elements/TextareaElement.tsx";
+import { TermsandCondition } from "../components/form-elements/TermsandCondition.tsx";
 
 //validation
 import { SchemaCustom } from "../validations/SchemaCustom.tsx";
 //json server
-import { postToForm } from "../../jsonserver.js";
+import { postToForm } from "../jsonserver.js";
 
 const Signup = () => {
   const navigate = useNavigate();

@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/Home.tsx'
-import Signup from './components/forms/Signup.tsx'
-import Login from './components/forms/Login.tsx'
-import Success from './components/forms/Success.tsx'
-import Error from './components/forms/Error.tsx'
-import Dashboard from './components/Dashboard.tsx'
+import Home from './pages/Home.tsx'
+import Error from './components/Error.tsx'
+import Dashboard from './pages/Dashboard.tsx'
+import Login from './authentication/Login.tsx';
+import Signup from './authentication/Signup.tsx';
+import Success from './components/Success.tsx';
 
 import ProtectedRoute from './routes/ProtectedRoute.tsx'
 
@@ -14,12 +14,12 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      
-      <Route element={<ProtectedRoute allowedRole="admin" />}>
+
+      <Route element={<ProtectedRoute />}>
         <Route path="/dashboard" element={<Dashboard />} />
       </Route>
 
-      <Route path="/success" element={<Success />} />      
+      <Route path="/success" element={<Success />} />
       <Route path="*" element={<Error />} />
     </Routes>
   );

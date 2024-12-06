@@ -6,8 +6,6 @@ import { useField } from "formik";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import BalloonEditor from "@ckeditor/ckeditor5-build-balloon";
 
-import "../../../index.css";
-
 export const TextareaElement = ({ name }) => {
   const [field, meta, helpers] = useField(name);
 

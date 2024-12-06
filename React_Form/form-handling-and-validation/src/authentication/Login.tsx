@@ -1,17 +1,18 @@
 import * as React from "react";
-import { Formik, Form } from "formik";
+import { Formik, Form, ErrorMessage } from "formik";
 import { Button, Box, Typography, Link } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { storeName } from "../../slices/userSlice.js";
+import { storeName } from "../store/slices/userSlice.js";
+import { SchemaCustom } from "../validations/LoginValidation.tsx";
 
 // custom form components
-import { InputElement } from "./modules/InputElement.tsx";
-import { getFormDetails } from "../../jsonserver.js";
-import { getAllDetails } from "../../jsonserver.js";
+import { getFormDetails } from "../jsonserver.js";
+import { getAllDetails } from '../jsonserver.js'
+import  { InputElement }  from "../components/form-elements/InputElement.tsx";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -39,6 +40,7 @@ const Login = () => {
           username: username,
           password: "",
         }}
+        validationSchema={SchemaCustom}
         onSubmit={async (values, actions) => {
           const data = await getAllDetails();
 
@@ -79,6 +81,11 @@ const Login = () => {
                   type="text"
                   name="username"
                 />
+                <ErrorMessage
+                  name="username"
+                  component="div"
+                  className="error-text"
+                />
               </Grid>
 
               <Grid size={12}>
@@ -87,6 +94,11 @@ const Login = () => {
                   label="Password"
                   type="password"
                   name="password"
+                />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="error-text"
                 />
               </Grid>
             </Grid>
