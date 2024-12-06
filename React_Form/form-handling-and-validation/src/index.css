@@ -17,3 +17,7 @@
     color: red;
     font-size: small;
 }
+
+.ck.ck-balloon-panel.ck-powered-by-balloon[class*=position_border]{
+    display: none;
+}

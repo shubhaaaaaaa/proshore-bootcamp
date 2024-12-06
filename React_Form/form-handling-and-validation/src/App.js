@@ -10,16 +10,18 @@ import ProtectedRoute from './routes/ProtectedRoute.tsx'
 
 function App() {
   return (
-    <>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<ProtectedRoute component={<Dashboard/>} />}/>
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/success" element={<Success />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      
+      <Route element={<ProtectedRoute allowedRole="admin" />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Route>
+
+      <Route path="/success" element={<Success />} />      
+      <Route path="*" element={<Error />} />
+    </Routes>
   );
 }
 export default App;
