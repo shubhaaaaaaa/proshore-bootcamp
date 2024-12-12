@@ -64,5 +64,55 @@ const getAllDetails = async () => {
         console.log('There was an error: ', e);
     }
 }
+const getDetail = async (id) => {
+    try {
+        const response = await fetch(`${url}/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
 
-export { postToForm, getFormDetails, getAllDetails }
+        const data = await response.json();
+        return data;
+
+    } catch (e) {
+        console.log('There was an error: ', e);
+    }
+}
+const resetDetail = async (id) => {
+    try {
+        const response = await fetch(`${url}/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ details: [] })
+        });
+
+    } catch (e) {
+        console.log('There was an error: ', e);
+    }
+}
+
+
+const patchDetails = async (id, newDetail) => {
+    try {
+        const response = await fetch(`${url}/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ details: newDetail })
+        });
+
+        const data = await response.json();
+        return data;
+
+    } catch (e) {
+        console.log('There was an error: ', e);
+    }
+}
+
+
+export { postToForm, getFormDetails, getAllDetails,getDetail,resetDetail, patchDetails }

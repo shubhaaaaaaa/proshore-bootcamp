@@ -58,8 +58,6 @@ export const SchemaCustom = yup.object().shape({
     
     rating: yup.number()
             .required('Choose your level of English'),
-    
-    textarea: yup.string().required('The text field cannot be blank'),
 
     username: yup.string()
                 .required('Username is required')

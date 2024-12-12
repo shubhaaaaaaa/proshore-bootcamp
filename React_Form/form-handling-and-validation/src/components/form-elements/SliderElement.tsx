@@ -1,7 +1,7 @@
 import React from "react";
 import { Slider } from "@mui/joy";
-import { useField } from "formik";
 import { FormLabel, FormControl } from "@mui/material";
+import { useField } from "formik";
 
 export const SliderElement = ({ name }) => {
   const [field] = useField(name);
@@ -34,3 +34,4 @@ export const SliderElement = ({ name }) => {
     </FormControl>
   );
 };
+

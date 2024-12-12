@@ -47,7 +47,7 @@ const Signup = () => {
         validationSchema={SchemaCustom}
         onSubmit={(values, actions) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
             postToForm(values);
             actions.setSubmitting(false);
             actions.resetForm();

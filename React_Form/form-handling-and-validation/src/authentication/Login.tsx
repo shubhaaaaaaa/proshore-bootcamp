@@ -58,6 +58,7 @@ const Login = () => {
             if (user) {
               dispatch(storeName(user.username));
               localStorage.setItem("username", user.username);
+              localStorage.setItem("id", user.id);
               navigate("/success");
             } else {
               alert("Invalid username or password");
