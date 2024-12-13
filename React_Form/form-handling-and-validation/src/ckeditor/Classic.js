@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { Button } from '@mui/joy';
+import { Button, Box } from '@mui/joy';
 
 import { patchDetails, getDetail, resetDetail } from "../jsonserver.js";
 
@@ -14,12 +14,12 @@ const Classic = () => {
     const fetchDetails = async () => {
       const allDetails = await getDetail(id);
       if (allDetails && allDetails.details) {
-        setSubmittedData(allDetails.details); 
+        setSubmittedData(allDetails.details);
       }
     };
     fetchDetails();
   }, [id]);
-  
+
   useEffect(() => {
     if (submittedData.length > 0) {
       patchDetails(id, submittedData);
@@ -27,7 +27,13 @@ const Classic = () => {
   }, [submittedData, id]);
 
   const handleSubmit = (data) => {
-    setSubmittedData((prevData) => [...prevData, data]); 
+
+    const removeHtmlTags = (input) => {
+      return input.replace(/<\/?[^>]+(>|$)/g, "");
+    };
+
+    setSubmittedData((prevData) => [...prevData, removeHtmlTags(data)]);
+    patchDetails(id, [...submittedData, removeHtmlTags(data)]);
     setData('');
   };
 
@@ -41,21 +47,13 @@ const Classic = () => {
     toolbar: [
       'bold', 'italic', 'link',
       'bulletedList', 'numberedList', 'blockQuote',
-      'insertTable', 'imageUpload', 'undo', 'redo'
+      'insertTable', 'undo', 'redo'
     ],
-    image: {
-      toolbar: ['imageTextAlternative', 'imageStyle:side']
-    },
-    simpleUpload: {
-			uploadUrl: 'https://api.imgur.com/3/',
-    },
-    headers: {
-      Authorization: 'Client-ID aefbe54286d45bb'
-    },
   };
 
   return (
     <>
+      <div className='mt-10'>
       <CKEditor
         editor={ClassicEditor}
         config={editorConfiguration}
@@ -65,8 +63,12 @@ const Classic = () => {
           setData(newData);
         }}
       />
-      <Button onClick={() => handleSubmit(data)}>Submit</Button>
-      <Button onClick={() => handleReset(id)}>Reset</Button>
+      </div>
+
+      <div className='flex justify-center items-center gap-14 mt-4'>
+        <Button variant="soft" color="danger" onClick={() => handleReset(id)}>Reset</Button>
+        <Button variant="soft" onClick={() => handleSubmit(data)}>Submit</Button>
+      </div>
 
       <div>
         {submittedData.map((item, index) => (
