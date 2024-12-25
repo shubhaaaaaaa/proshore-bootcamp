@@ -1,11 +1,10 @@
 export type TMovie = {
     id: number;
     title: string;
-    overview: string;
     poster_path: string;
+    overview: string;
     release_date: string;
-}
-
-export type TMovieState = {
-    movies: TMovie[],
-}
+  }
+  
+  export type TMovieState = TMovie[];
+  

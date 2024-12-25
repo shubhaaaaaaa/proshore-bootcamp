@@ -1,21 +1,12 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies } from "../api/tmdb";
-import { TMovie } from "../types/movieType";
+import MovieList from "../ui/MovieList";
+import SearchBar from "../ui/SearchBar";
 
-const Home = () => {
-  const dispatch = useDispatch();
-  const movies = useSelector((state: { movies: TMovie[] }) => state.movies);
-
-  useEffect(() => {
-    dispatch(fetchMovies());
-  }, [dispatch]);
+const Home = () => { 
 
   return (
     <>
-      {movies.map((movie) => (
-        <div>{movie.title}</div>
-      ))}
+      <SearchBar/>
+      <MovieList/>
     </>
   );
 };

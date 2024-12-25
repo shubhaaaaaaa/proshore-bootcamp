@@ -1,19 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TMovieState } from "../../types/movieType";
+import { TMovie } from "../../types/movieType"; // Import types
 
-const initialState: TMovieState = {
-    movies: []
-}
+const initialState: TMovie[] = []; // Initial state is an empty array
 
 export const movieSlice = createSlice({
-    name: 'movie',
-    initialState,
-    reducers: {
-        setMovies(state, action) {
-            state.movies = action.payload
-        }
-    }
-})
+  name: "movies",
+  initialState,
+  reducers: {
+    setMovies(state, action) {
+      return action.payload;
+    },
+  },
+});
 
-export const { setMovies } = movieSlice.actions
-export default movieSlice.reducer
+export const { setMovies } = movieSlice.actions;
+
+export default movieSlice.reducer;
